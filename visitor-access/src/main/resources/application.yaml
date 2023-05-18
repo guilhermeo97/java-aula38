@@ -1,0 +1,13 @@
+# spring.datasource.url= jdbc:postgresql://localhost:5432/visitor_api
+# spring.datasource.username=postgres
+# spring.datasource.password=gui
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/visitor_api
+        username: postgres
+        password: gui
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
