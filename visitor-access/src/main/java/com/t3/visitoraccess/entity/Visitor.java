@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,4 +44,8 @@ public class Visitor {
     @CreationTimestamp //salva o horario da criação
     private Date dateCreated;
 
+    //Lado Dono
+    @ManyToOne  //FetchType.EAGER
+    @JoinColumn(name = "resident_id")
+    private User resident;
 }

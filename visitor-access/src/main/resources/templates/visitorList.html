@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        <title>Lista de Visitantes</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Lista de Visitantes</h1>
+        <a th:href="@{/visitor/add}">Adicionar novo visitante</a>
+
+        <table class="table table-striped">
+            <tr>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Nome do Residente</th>
+                <th>Nome do Visitante</th>
+                <th>CPF</th>
+                <th>Bloco</th>
+                <th>Apartamento</th>
+                <th>Data de Liberação</th>
+                <th sec:authorize="hasRole('ROLE_USER')">Deletar</th>
+            </tr>
+
+            <tr th:each="v : ${visitors}">
+                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${v.resident.username}"></td>
+                <td th:text="${v.fullName}"></td>
+                <td th:text="${v.cpf}"></td>
+                <td th:text="${v.block}"></td>
+                <td th:text="${v.apartment}"></td>
+                <td th:text="${v.entryTime}"></td>
+                <td sec:authorize="hasRole('ROLE_USER')" > <a th:href="'visitor/delete/' + ${v.id}" th:text="'Deletar ' + ${v.id}"></a> </td>
+            </tr>
+
+        </table>
+    </body>
+</html>

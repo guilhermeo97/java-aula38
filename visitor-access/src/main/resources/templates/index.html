@@ -17,6 +17,11 @@
             </div>
         </div>
 
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/visitor}">Visitantes</a>
+            <a th:href="@{/visitor/add}">Adicionar visitante</a>
+        </div>
+
         <h3 sec:authorize="hasRole('ROLE_USER')"> Usuário </h3>
         <h3 sec:authorize="hasRole('ROLE_ADMIN')"> Administrador </h3>
 
